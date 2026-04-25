@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ArgoC:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ArgoC_jar</output-path>
+    <root id="archive" name="ArgoC.jar">
+      <element id="module-output" name="ArgoC" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/bouncycastle/bcprov-jdk15on/1.70/bcprov-jdk15on-1.70.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/de/mkammerer/argon2-jvm/2.1/argon2-jvm-2.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/java/dev/jna/jna/4.2.1/jna-4.2.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
