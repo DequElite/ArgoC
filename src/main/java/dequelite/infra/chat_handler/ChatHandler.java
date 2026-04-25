@@ -2,6 +2,7 @@ package dequelite.infra.chat_handler;
 
 import dequelite.app.crypto.CryptoService;
 import dequelite.app.history.HistoryService;
+import dequelite.domain.chat_history.ChatMessage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,10 +13,13 @@ import java.util.Scanner;
 
 public class ChatHandler {
     //todo: написать сохранение сообщений и чатов в историю
+    //todo: написать README
 
 
     private final CryptoService cryptoService;
     private final HistoryService historyService;
+
+    private String chatId;
 
     public ChatHandler(CryptoService cryptoService, HistoryService historyService) {
         this.cryptoService = cryptoService;
@@ -29,6 +33,12 @@ public class ChatHandler {
             );
 
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+
+            String clientIp = socket.getInetAddress().getHostAddress();
+            String host = socket.getLocalAddress().getHostAddress();
+            int port = socket.getPort();
+
+            this.chatId = historyService.saveChat(host, String.valueOf(port), clientIp);
 
             new Thread(() -> receiveMessage(socket, in, password)).start();
             new Thread(() -> sendMessage(out, password)).start();
@@ -47,6 +57,11 @@ public class ChatHandler {
                 System.out.print("\r");
                 System.out.println("Message: " + socket.getInetAddress() + " " + decodedMsg);
                 System.out.print("> ");
+
+                this.historyService.addMessage(
+                        chatId,
+                        new ChatMessage(socket.getInetAddress().getHostAddress(), decodedMsg)
+                );
             }
         } catch (IOException e) {
             System.out.println("Connection closed: " + e);
@@ -61,6 +76,10 @@ public class ChatHandler {
             String msg = sc.nextLine();
             String encodedMsg = this.cryptoService.encrypt(msg, password);
             out.println(encodedMsg);
+            this.historyService.addMessage(
+                    chatId,
+                    new ChatMessage("me", msg)
+            );
         }
     }
 }
