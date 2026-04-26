@@ -12,10 +12,13 @@ public class ChatService {
     private final HistoryService historyService;
     private final UiService uiService;
 
-    public ChatService(CryptoService cryptoService, HistoryService historyService, UiService uiService) {
+    private final Scanner sc;
+
+    public ChatService(CryptoService cryptoService, HistoryService historyService, UiService uiService, Scanner sc) {
         this.cryptoService = cryptoService;
         this.historyService = historyService;
         this.uiService = uiService;
+        this.sc = sc;
     }
 
     public void handleIncoming(
@@ -36,19 +39,15 @@ public class ChatService {
 
     public String handleOutgoing( String chatId,
                                   String password ) {
-        try (Scanner sc = new Scanner(System.in)) {
-            this.uiService.myMessage();
-            String message = sc.nextLine();
+        this.uiService.myMessage();
+        String message = sc.nextLine();
 
-            String encoded = this.cryptoService.encrypt(message, password);
-            this.historyService.addMessage(
-                    chatId,
-                    new ChatMessage("me", message)
-            );
+        String encoded = this.cryptoService.encrypt(message, password);
+        this.historyService.addMessage(
+                chatId,
+                new ChatMessage("me", message)
+        );
 
-            return encoded;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return encoded;
     }
 }
