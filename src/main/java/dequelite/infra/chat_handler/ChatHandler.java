@@ -1,5 +1,6 @@
 package dequelite.infra.chat_handler;
 
+import dequelite.app.chat.ChatService;
 import dequelite.app.crypto.CryptoService;
 import dequelite.app.history.HistoryService;
 import dequelite.domain.chat_history.ChatMessage;
@@ -12,18 +13,14 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class ChatHandler {
-    //todo: написать сохранение сообщений и чатов в историю
-    //todo: написать README
-
-
-    private final CryptoService cryptoService;
     private final HistoryService historyService;
+    private final ChatService chatService;
 
     private String chatId;
 
-    public ChatHandler(CryptoService cryptoService, HistoryService historyService) {
-        this.cryptoService = cryptoService;
+    public ChatHandler(HistoryService historyService, ChatService chatService) {
         this.historyService = historyService;
+        this.chatService = chatService;
     }
 
     public void handle(Socket socket, String password) {
@@ -52,16 +49,7 @@ public class ChatHandler {
         try {
             String msg;
             while ((msg = in.readLine()) != null) {
-                String decodedMsg = this.cryptoService.decode(msg, password);
-
-                System.out.print("\r");
-                System.out.println("Message: " + socket.getInetAddress() + " " + decodedMsg);
-                System.out.print("> ");
-
-                this.historyService.addMessage(
-                        chatId,
-                        new ChatMessage(socket.getInetAddress().getHostAddress(), decodedMsg)
-                );
+                this.chatService.handleIncoming(this.chatId, msg, password, socket.getInetAddress().getHostAddress());
             }
         } catch (IOException e) {
             System.out.println("Connection closed: " + e);
@@ -69,17 +57,9 @@ public class ChatHandler {
     }
 
     public void sendMessage(PrintWriter out, String password) {
-        Scanner sc = new Scanner(System.in);
 
         while (true) {
-            System.out.print("> ");
-            String msg = sc.nextLine();
-            String encodedMsg = this.cryptoService.encrypt(msg, password);
-            out.println(encodedMsg);
-            this.historyService.addMessage(
-                    chatId,
-                    new ChatMessage("me", msg)
-            );
+            out.println(this.chatService.handleOutgoing(this.chatId, password));
         }
     }
 }

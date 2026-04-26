@@ -1,8 +1,10 @@
 package dequelite.app;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dequelite.app.chat.ChatService;
 import dequelite.app.crypto.CryptoService;
 import dequelite.app.history.HistoryService;
+import dequelite.app.ui.UiService;
 import dequelite.infra.chat_handler.ChatHandler;
 import dequelite.infra.socket_client.SocketClient;
 import dequelite.infra.socket_server.SocketServer;
@@ -26,7 +28,10 @@ public class Main {
         ObjectMapper mapper = new ObjectMapper();
         HistoryService historyService = new HistoryService(mapper);
 
-        ChatHandler chatHandler = new ChatHandler(cryptoService, historyService);
+        UiService uiService = new UiService();
+        ChatService chatService = new ChatService(cryptoService, historyService, uiService);
+
+        ChatHandler chatHandler = new ChatHandler(historyService, chatService);
 
         switch (mode) {
             case "server" -> {
