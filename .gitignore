@@ -12,6 +12,7 @@ todo.md
 *.iws
 *.iml
 *.ipr
+*.json
 
 ### Eclipse ###
 .apt_generated
