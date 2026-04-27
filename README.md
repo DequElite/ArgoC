@@ -19,6 +19,11 @@ Talk directly with your friends without middle servers, using encrypted messages
 
 ## 🚀 Usage
 
+### Build ArgoC (This will be removed in the future)
+```bash
+mvn package
+```
+
 ### Start server
 
 ```bash
