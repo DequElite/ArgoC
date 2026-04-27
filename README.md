@@ -31,6 +31,18 @@ java -jar ArgoC.jar -s --port 9999 --password mySecret
 java -jar ArgoC.jar -c --host 127.0.0.1 --port 9999 --password mySecret
 ```
 
+### History
+
+#### Show all:
+```bash
+java -jar ArgoC.jar -h --show ALL
+```
+
+#### Show by id:
+```bash
+java -jar ArgoC.jar -h --show ONE --id ...
+```
+
 ---
 
 ## ⚠️ Important

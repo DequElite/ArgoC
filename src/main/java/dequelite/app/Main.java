@@ -5,10 +5,9 @@ import dequelite.app.chat.ChatService;
 import dequelite.app.cli.CliParser;
 import dequelite.app.crypto.CryptoService;
 import dequelite.app.history.HistoryService;
+import dequelite.domain.chat_history.HistoryRepository;
 import dequelite.app.ui.UiService;
 import dequelite.infra.chat_handler.ChatHandler;
-import dequelite.infra.socket_client.SocketClient;
-import dequelite.infra.socket_server.SocketServer;
 
 import java.util.Scanner;
 
@@ -19,14 +18,16 @@ public class Main {
         CryptoService cryptoService = new CryptoService();
 
         ObjectMapper mapper = new ObjectMapper();
-        HistoryService historyService = new HistoryService(mapper);
+        HistoryRepository historyRepository = new HistoryRepository(mapper);
 
         UiService uiService = new UiService();
-        ChatService chatService = new ChatService(cryptoService, historyService, uiService, scanner);
+        ChatService chatService = new ChatService(cryptoService, historyRepository, uiService, scanner);
 
-        ChatHandler chatHandler = new ChatHandler(historyService, chatService);
+        ChatHandler chatHandler = new ChatHandler(historyRepository, chatService);
 
-        CliParser cliParser = new CliParser(chatHandler);
+        HistoryService historyService = new HistoryService(historyRepository, uiService);
+
+        CliParser cliParser = new CliParser(chatHandler, historyService);
         cliParser.parse(args);
 //        if (args.length < 4) {
 //            System.out.println("Usage:");

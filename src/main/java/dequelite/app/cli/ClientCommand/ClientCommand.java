@@ -37,12 +37,10 @@ public class ClientCommand extends CliCommand {
             String key = param.getKey();
             String value = param.getValue();
 
-            if(key.equals("password")) {
-                params.setPassword(value);
-            } else if (key.equals("port")){
-                params.setPort(value);
-            } else if (key.equals("host")) {
-                params.setHost(value);
+            switch (key) {
+                case "password" -> params.setPassword(value);
+                case "port" -> params.setPort(value);
+                case "host" -> params.setHost(value);
             }
         }
 

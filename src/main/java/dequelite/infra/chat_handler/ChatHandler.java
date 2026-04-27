@@ -1,25 +1,22 @@
 package dequelite.infra.chat_handler;
 
 import dequelite.app.chat.ChatService;
-import dequelite.app.crypto.CryptoService;
-import dequelite.app.history.HistoryService;
-import dequelite.domain.chat_history.ChatMessage;
+import dequelite.domain.chat_history.HistoryRepository;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class ChatHandler {
-    private final HistoryService historyService;
+    private final HistoryRepository historyRepository;
     private final ChatService chatService;
 
     private String chatId;
 
-    public ChatHandler(HistoryService historyService, ChatService chatService) {
-        this.historyService = historyService;
+    public ChatHandler(HistoryRepository historyRepository, ChatService chatService) {
+        this.historyRepository = historyRepository;
         this.chatService = chatService;
     }
 
@@ -35,7 +32,7 @@ public class ChatHandler {
             String host = socket.getLocalAddress().getHostAddress();
             int port = socket.getPort();
 
-            this.chatId = historyService.saveChat(host, String.valueOf(port), clientIp);
+            this.chatId = historyRepository.saveChat(host, String.valueOf(port), clientIp);
 
             new Thread(() -> receiveMessage(socket, in, password)).start();
             new Thread(() -> sendMessage(out, password)).start();

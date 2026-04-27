@@ -1,7 +1,7 @@
 package dequelite.app.chat;
 
 import dequelite.app.crypto.CryptoService;
-import dequelite.app.history.HistoryService;
+import dequelite.domain.chat_history.HistoryRepository;
 import dequelite.app.ui.UiService;
 import dequelite.domain.chat_history.ChatMessage;
 
@@ -9,14 +9,14 @@ import java.util.Scanner;
 
 public class ChatService {
     private final CryptoService cryptoService;
-    private final HistoryService historyService;
+    private final HistoryRepository historyRepository;
     private final UiService uiService;
 
     private final Scanner sc;
 
-    public ChatService(CryptoService cryptoService, HistoryService historyService, UiService uiService, Scanner sc) {
+    public ChatService(CryptoService cryptoService, HistoryRepository historyRepository, UiService uiService, Scanner sc) {
         this.cryptoService = cryptoService;
-        this.historyService = historyService;
+        this.historyRepository = historyRepository;
         this.uiService = uiService;
         this.sc = sc;
     }
@@ -31,7 +31,7 @@ public class ChatService {
 
         this.uiService.clientMessage(clientIp, decodedMessage);
 
-        this.historyService.addMessage(
+        this.historyRepository.addMessage(
                 chatId,
                 new ChatMessage(clientIp, decodedMessage)
         );
@@ -43,7 +43,7 @@ public class ChatService {
         String message = sc.nextLine();
 
         String encoded = this.cryptoService.encrypt(message, password);
-        this.historyService.addMessage(
+        this.historyRepository.addMessage(
                 chatId,
                 new ChatMessage("me", message)
         );

@@ -216,4 +216,137 @@
     "host" : "127.0.0.1",
     "text" : "oh hell"
   } ]
+}, {
+  "id" : "172.26.119.211:57255:172.26.5.222",
+  "creationDate" : 1777228333598,
+  "host" : "172.26.119.211",
+  "port" : "57255",
+  "clientIp" : "172.26.5.222",
+  "messages" : [ {
+    "host" : "me",
+    "text" : "о"
+  }, {
+    "host" : "172.26.5.222",
+    "text" : "Idi nahui"
+  }, {
+    "host" : "me",
+    "text" : "YEAH"
+  }, {
+    "host" : "172.26.5.222",
+    "text" : "DolbebIdi nah"
+  }, {
+    "host" : "me",
+    "text" : "IT IS WORKING"
+  }, {
+    "host" : "172.26.5.222",
+    "text" : "SDFSDFSDFK"
+  }, {
+    "host" : "172.26.5.222",
+    "text" : "SDFDSF"
+  }, {
+    "host" : "172.26.5.222",
+    "text" : "DSFS"
+  }, {
+    "host" : "172.26.5.222",
+    "text" : "F"
+  }, {
+    "host" : "172.26.5.222",
+    "text" : "DSF"
+  }, {
+    "host" : "172.26.5.222",
+    "text" : "SD"
+  }, {
+    "host" : "172.26.5.222",
+    "text" : "F"
+  }, {
+    "host" : "172.26.5.222",
+    "text" : "SD"
+  }, {
+    "host" : "me",
+    "text" : "ESGSE"
+  }, {
+    "host" : "me",
+    "text" : "G"
+  }, {
+    "host" : "me",
+    "text" : "SD"
+  }, {
+    "host" : "me",
+    "text" : "FSG"
+  }, {
+    "host" : "me",
+    "text" : ""
+  }, {
+    "host" : "me",
+    "text" : "S"
+  }, {
+    "host" : "me",
+    "text" : "FSDG"
+  }, {
+    "host" : "me",
+    "text" : "DF"
+  }, {
+    "host" : "me",
+    "text" : "DF"
+  }, {
+    "host" : "me",
+    "text" : ""
+  }, {
+    "host" : "me",
+    "text" : "DF"
+  }, {
+    "host" : "172.26.5.222",
+    "text" : "FFFFFFF"
+  }, {
+    "host" : "me",
+    "text" : "GD"
+  }, {
+    "host" : "me",
+    "text" : "DF"
+  }, {
+    "host" : "me",
+    "text" : "G"
+  }, {
+    "host" : "me",
+    "text" : "DFG"
+  }, {
+    "host" : "me",
+    "text" : "DFG"
+  }, {
+    "host" : "me",
+    "text" : "DFG"
+  }, {
+    "host" : "me",
+    "text" : "FDG"
+  }, {
+    "host" : "172.26.5.222",
+    "text" : "EFEFEF"
+  }, {
+    "host" : "172.26.5.222",
+    "text" : "FFFFDFSAFDSFSDFSDSFDSFSDDSFDSFDFSDFDSF"
+  }, {
+    "host" : "172.26.5.222",
+    "text" : "SDFSDFSDFSDFSDFS"
+  }, {
+    "host" : "me",
+    "text" : "WHY IT DOES NOT WORKING ON DIMA`S LAPTOP?"
+  }, {
+    "host" : "me",
+    "text" : ""
+  }, {
+    "host" : "me",
+    "text" : "hui"
+  }, {
+    "host" : "me",
+    "text" : "are you here?"
+  }, {
+    "host" : "me",
+    "text" : "ok"
+  }, {
+    "host" : "me",
+    "text" : "^("
+  }, {
+    "host" : "me",
+    "text" : ":("
+  } ]
 } ]
