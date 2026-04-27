@@ -1,4 +1,3 @@
-target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -13,6 +12,7 @@ todo.md
 *.iml
 *.ipr
 *.json
+history.json
 
 ### Eclipse ###
 .apt_generated

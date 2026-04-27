@@ -1,0 +1,16 @@
+dequelite/app/history/HistoryService.class
+dequelite/app/chat/ChatService.class
+dequelite/infra/socket_server/SocketServer.class
+dequelite/app/cli/ClientCommand/dto/ClientCommandParams.class
+dequelite/app/cli/HistoryCommand/dto/HistoryParamShow.class
+dequelite/app/cli/HistoryCommand/HistoryCommand.class
+dequelite/app/ui/UiService.class
+dequelite/app/cli/HistoryCommand/dto/HistoryCommandParams.class
+dequelite/app/Main.class
+dequelite/infra/socket_client/SocketClient.class
+dequelite/app/cli/ServerCommand/dto/ServerCommandParams.class
+dequelite/domain/chat_history/ChatMessage.class
+dequelite/domain/chat_history/ChatHistory.class
+dequelite/domain/chat_history/HistoryRepository.class
+dequelite/infra/chat_handler/ChatHandler.class
+dequelite/app/crypto/CryptoService.class
